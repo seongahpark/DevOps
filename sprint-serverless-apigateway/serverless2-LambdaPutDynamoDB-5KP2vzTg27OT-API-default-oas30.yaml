@@ -1,0 +1,38 @@
+openapi: "3.0.1"
+info:
+  title: "serverless2-LambdaPutDynamoDB-5KP2vzTg27OT-API"
+  description: "Created by AWS Lambda"
+  version: "2022-04-13T05:28:09Z"
+servers:
+- url: "https://4bvvw9gtll.execute-api.ap-northeast-2.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: "/default"
+paths:
+  /serverless2-LambdaPutDynamoDB-5KP2vzTg27OT:
+    post:
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      security:
+      - sigv4: []
+      - api_key: []
+components:
+  schemas:
+    Empty:
+      title: "Empty Schema"
+      type: "object"
+  securitySchemes:
+    api_key:
+      type: "apiKey"
+      name: "x-api-key"
+      in: "header"
+    sigv4:
+      type: "apiKey"
+      name: "Authorization"
+      in: "header"
+      x-amazon-apigateway-authtype: "awsSigv4"

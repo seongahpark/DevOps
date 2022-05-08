@@ -1,0 +1,82 @@
+# 1번 입력
+$ kubectl rollout history deployment cozserver-deployment
+deployment.apps/cozserver-deployment 
+REVISION  CHANGE-CAUSE
+1         kubectl apply --filename=cozserver-deployment-v1.yaml --record=true
+2         kubectl apply --filename=cozserver-deployment-v2.yaml --record=true
+3         kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+
+# 2번 입력
+$ kubectl rollout undo deployment cozserver-deployment
+deployment.apps/cozserver-deployment rolled back
+
+# 3번 입력
+$ kubectl rollout history deployment cozserver-deployment
+deployment.apps/cozserver-deployment 
+REVISION  CHANGE-CAUSE
+1         kubectl apply --filename=cozserver-deployment-v1.yaml --record=true
+3         kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+4         kubectl apply --filename=cozserver-deployment-v2.yaml --record=true
+
+# Advanced Goal 입력
+$ kubectl rollout history deployment cozserver-deployment
+deployment.apps/cozserver-deployment 
+REVISION  CHANGE-CAUSE
+1         kubectl apply --filename=cozserver-deployment-v1.yaml --record=true
+3         kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+4         kubectl apply --filename=cozserver-deployment-v2.yaml --record=true
+5         kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+
+$ kubectl get all
+NAME                                        READY   STATUS    RESTARTS      AGE
+pod/cozserver-deployment-69888d4745-btxhb   1/1     Running   1 (67m ago)   3d1h
+pod/cozserver-deployment-69888d4745-hj8jg   1/1     Running   1 (3d ago)    3d1h
+pod/cozserver-deployment-849f4967f8-2wmg9   0/1     Running   0             44m
+
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/cozserver    LoadBalancer   10.110.37.114   127.0.0.1     80:30134/TCP   3d1h
+service/kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP        3d1h
+
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/cozserver-deployment   2/2     1            2           3d1h
+
+NAME                                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/cozserver-deployment-69888d4745   2         2         2       3d1h
+replicaset.apps/cozserver-deployment-77858d96c6   0         0         0       3d1h
+replicaset.apps/cozserver-deployment-849f4967f8   1         1         0       44m
+replicaset.apps/cozserver-deployment-8b58c5594    0         0         0       3d1h
+
+$ kubectl describe deployment cozserver-deployment
+Name:                   cozserver-deployment
+Namespace:              default
+CreationTimestamp:      Fri, 22 Apr 2022 15:47:32 +0900
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 5
+                        kubernetes.io/change-cause: kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+Selector:               app=cozserver
+Replicas:               2 desired | 1 updated | 3 total | 2 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        10
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=cozserver
+  Containers:
+   cozserver:
+    Image:        sebcontents/cozserver:3.0
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Readiness:    http-get http://:80/ delay=0s timeout=1s period=1s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    False   ProgressDeadlineExceeded
+OldReplicaSets:  cozserver-deployment-69888d4745 (2/2 replicas created)
+NewReplicaSet:   cozserver-deployment-849f4967f8 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  45m   deployment-controller  Scaled up replica set cozserver-deployment-849f4967f8 to 1

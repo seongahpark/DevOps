@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cozserver
+  namespace: default
+spec:
+  selector:
+    app: cozserver # 배포하려는 파드를 지정합니다. 당연히 파드가 이미 실행중이어야 합니다.
+  type: LoadBalancer
+  ports:
+  - name: cozserver
+    protocol: TCP
+    port: 80
+    targetPort: 8080

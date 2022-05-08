@@ -1,0 +1,15 @@
+{
+  "name": "mini-node-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3"
+  },
+  "scripts": {
+    "test": "echo no test",
+    "start": "node server/server-express.js"
+  },
+  "author": "Codestates",
+  "license": "ISC"
+}

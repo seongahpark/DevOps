@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cozserver-deployment
+spec:
+  selector:
+    matchLabels:
+      app: cozserver
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: cozserver
+    spec:
+      containers:
+      - name: cozserver
+        image: sebcontents/cozserver:2.0 ## 버전 2.0
+        ports:
+        - containerPort: 80

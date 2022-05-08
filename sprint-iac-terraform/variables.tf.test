@@ -1,0 +1,5 @@
+variable "rds_password" {
+  description = "Value of RDS password"
+  type        = string
+  default     = INPUT_YOUR_PW
+}

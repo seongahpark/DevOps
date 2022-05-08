@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: A Lambda function that returns a static string.
+Resources:
+  webhookgithublambdadiscord:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: src/handlers/github-lambda-discord.githubDiscordHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+      CodeUri: .
+      Description: A Lambda function that returns a static string.
+      MemorySize: 128
+      Timeout: 100
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /webhook-github-lambda-discord
+            Method: POST
+      Environment:
+        Variables:
+          DISCORD_BOT_AVATAR_URL: >-
+            INPUT_YOUR_AVATAR_URL
+          DISCORD_BOT_NAME: INPUT_YOUR_BOT_NAME
+          DISCORD_WEBHOOK_PATH: >-
+            INPUT_YOUR_DISCORD_WEBHOOK_PATH

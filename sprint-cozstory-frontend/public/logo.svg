@@ -1,0 +1,4 @@
+<svg width="57" height="32" viewBox="0 0 57 32" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 21.242 18 L 18 21.317 L 18 27.68 L 21.245 31 L 52.755 31 L 56 27.68 L 56 21.317 L 52.758 18 L 21.242 18 Z M 3.317 18 L 0 21.317 L 0 27.68 L 3.32 31 L 9.68 31 L 13 27.68 L 13 21.317 L 9.682 18 L 3.317 18 Z" transform="translate(-42 -42) translate(42 42)"></path>
+  <path d="M 36.23 0 L 33.001 3.316 L 33.001 9.68 L 36.233 13 L 53.766 13 L 56.998 9.68 L 56.998 3.316 L 53.769 0 L 36.23 0 Z" transform="translate(-42 -42) translate(42 42) matrix(1, 0, 0, 1, -1, 0)" fill="#3a06be"></path>
+</svg>

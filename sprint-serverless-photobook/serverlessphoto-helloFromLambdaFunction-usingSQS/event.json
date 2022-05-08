@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "messageId": "44d1d1dc-f866-4d5c-bcab-baabc09f200a",
+            "receiptHandle": "AQEBb+t5SFDHsGYU1jwq4N+Qj8OPg5ti+dsIPGCjjBmVRmpSlwhi8idfr6Pf3iyUwlZv2gunSoN2rIFvxFD9aGZVjQt0azQG/0ViSFrdN4+JGrJG7yK7ffV6U52AdnO3yS9WDpEyZaIITu8BS3ccktOD1hI+h43IOkKbBTX10WY3bWmOPGjUD/ymWJy1MBgFai52D9lP8YS+Fmaeo+p3YclVsxl+6KWd2erGFeWrXbMVrcH2jS+RQ2254rjKNyA+AB66i2kZEEjQV5F0cgrg8yDgce5XKtAWwIMjAYrxlunZAx1p7dGLb8e0PxA9c/2CQWa5gHpKENKcDA91987UbklHJzc+Cp9fpv9Zb72rtDXkzTi8SpWouHSa5gPJOIN38M5SM0BNcZwZ1b/9+i1XwCPdeA==",
+            "body": "{\"Records\":[{\"eventVersion\":\"2.1\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"ap-northeast-2\",\"eventTime\":\"2022-04-16T06:08:35.109Z\",\"eventName\":\"ObjectCreated:Put\",\"userIdentity\":{\"principalId\":\"A2ISAT7GW20MHL\"},\"requestParameters\":{\"sourceIPAddress\":\"116.125.90.86\"},\"responseElements\":{\"x-amz-request-id\":\"042NVBYWFSNF1WJD\",\"x-amz-id-2\":\"aMGuYb1weC4gM3hHiI1YnovoPgMQtKPV166Kl7cEA3M9BvdXOM6bde52rgKGnn1oIExLMW2wMlO1yRbg5g9ZykP56NugEAbj\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"9d0cf477-a1ea-47ff-9b54-285dbb68981a\",\"bucket\":{\"name\":\"serverless-photo-s3-bucket\",\"ownerIdentity\":{\"principalId\":\"A2ISAT7GW20MHL\"},\"arn\":\"arn:aws:s3:::serverless-photo-s3-bucket\"},\"object\":{\"key\":\"%E1%84%92%E1%85%A1%E1%86%AB%E1%84%80%E1%85%B3%E1%86%AF%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%B7.jpeg\",\"size\":95955,\"eTag\":\"e349e777fee6dc2db0420b741ec11cb5\",\"sequencer\":\"00625A5D63099E4CCC\"}}}]}",
+            "attributes": {
+                "ApproximateReceiveCount": "8",
+                "SentTimestamp": "1650089316284",
+                "SenderId": "AIDAJCPXNKW2CHJMM46DC",
+                "ApproximateFirstReceiveTimestamp": "1650089316284"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "0e0d2e1654477482d08a3e41548bdbeb",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:ap-northeast-2:948190516250:photoQueue",
+            "awsRegion": "ap-northeast-2"
+        }
+    ]
+}
